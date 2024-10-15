@@ -1,0 +1,65 @@
+# Based on obsidian-hub's gitignore
+# https://github.com/obsidian-community/obsidian-hub/blob/main/.gitignore
+
+# obsidian
+.obsidian/
+.trash/
+
+# windows
+*.lnk
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.stackdump
+.DS_STORE
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# mac/ios
+.DS_Store
+.AppleDouble
+.LSOverride
+venv/
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# other
+.trash/
+.[Tt]rashes/
+
+# vscode
+.vscode-test/
+.vscode/
+*.code-workspace
+.history
+
+# pycharm
+.idea
+*.iml
+
+# npm
+node_modules/
+.node_modules/
+jspm_packages/
+.npm
+npm-debug.log*
+.pnpm-debug.log*
+.node_repl_history
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
