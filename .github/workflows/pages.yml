@@ -1,5 +1,5 @@
 # Work in progress github action derived from github's "Static HTML" template
-name: Build & Deploy to Github Pages
+name: Quartz Build & Github Pages Deploy
 
 on:
   # Runs on pushes targeting the default branch
@@ -22,23 +22,37 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Checkout should be moved here
-  # Build job would go here
-  # Deploy to github pages
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      # Setup
+      - name: Checkout quartz
         uses: actions/checkout@v4
-      - name: Setup Pages
+        with:
+          repository: 'strawberryhome/quartz'
+      - name: Checkout content vault
+        uses: actions/checkout@v4
+        with:
+          path: 'content'
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+      - name: Install Dependencies
+        run: npm i
+      # Build
+      - name: Build using Quartz
+        run: npx quartz build
+      # Deploy
+      - name: Setup Github Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'content'
+          path: 'public'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
